@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Move · Patos-PB</title>
+  <meta name="description" content="Move Patos-PB: participe de um VC, grupos do Move, departamentos, aconselhamento e como chegar.">
+  <meta name="theme-color" content="#1d1c1a">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Move · Patos-PB">
+  <meta property="og:description" content="Todos os links do Move em um lugar só.">
+  <meta property="og:image" content="assets/identidade.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap" rel="stylesheet">
+  <!-- gerado pelo Tailwind a partir de src/input.css (npm run build) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex min-h-screen justify-center bg-tinta font-sans text-base leading-normal text-papel antialiased min-[520px]:bg-[#141312] min-[520px]:py-10">
+  <main class="flex min-h-screen w-full max-w-[460px] flex-col bg-cartaz min-[520px]:min-h-0 min-[520px]:shadow-[0_30px_80px_rgba(0,0,0,.55)]">
+
+    <header>
+      <img src="assets/topo.webp" alt="" width="1080" height="440" class="block h-auto w-full">
+      <h1 class="sr-only">Move Patos-PB</h1>
+    </header>
+
+    <div class="bg-arte-meio -mt-px flex flex-1 flex-col items-center px-6 pt-3 pb-9">
+      <nav aria-label="Links do Move" class="w-full max-w-[360px]">
+
+        <!-- 1. PRINCIPAL — VC (os líderes ficam no arquivo vc.js) -->
+        <button type="button" id="vc-botao" aria-expanded="false" aria-controls="vc-painel"
+          class="group relative block w-full cursor-pointer rounded-2xl bg-amarelo text-left text-tinta shadow-[0_10px_24px_rgba(0,0,0,.4)] transition duration-150 hover:-translate-y-px active:translate-y-px focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-papel">
+          <!-- fita adesiva, como na arte -->
+          <span aria-hidden="true" class="absolute -top-2 left-7 h-5 w-16 -rotate-3 bg-papel/80 shadow-[0_1px_2px_rgba(0,0,0,.35)]"></span>
+          <span aria-hidden="true" class="meio-tom absolute inset-0 rounded-2xl"></span>
+          <span class="relative flex items-center gap-3 px-5 py-[18px]">
+            <span class="min-w-0 flex-1">
+              <span class="opsz-24 block text-xl leading-none font-black tracking-[-.02em] uppercase">Participe de um VC</span>
+              <span class="mt-1.5 block text-xs font-medium text-tinta/75">Veja os líderes e os bairros</span>
+            </span>
+            <span class="grid size-9 shrink-0 place-items-center rounded-full bg-tinta text-amarelo">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[3] transition-transform duration-300 group-aria-expanded:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </span>
+        </button>
+
+        <div id="vc-painel" class="painel sangrar">
+          <div class="overflow-hidden">
+            <div class="mt-4 bg-black pt-1 pb-5 text-center shadow-[inset_0_1px_0_rgba(255,242,0,.35),inset_0_-1px_0_rgba(255,242,0,.35)]">
+              <!-- carrossel: o card do meio fica em destaque -->
+              <ul id="vc-lista" aria-label="Líderes de VC"
+                class="relative flex touch-pan-x touch-pan-y snap-x snap-mandatory overflow-x-auto overscroll-x-contain px-[15%] py-7 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"></ul>
+              <div aria-live="polite" class="-mt-2">
+                <p id="vc-nome" class="text-sm leading-tight font-bold text-papel"></p>
+                <p id="vc-bairro" class="mt-0.5 text-[10px] font-semibold tracking-[.12em] text-amarelo uppercase"></p>
+              </div>
+              <p class="mt-2 text-[11px] text-papel/55">Deslize e toque na foto para ver o VC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. LINKS — troque o href="#" pelo link real -->
+        <ul class="mt-3 flex flex-col gap-2.5">
+          <li>
+            <a href="https://chat.whatsapp.com/H6CEXFSbBOg54Z90NIZ9t2" target="_blank" rel="noopener" class="linha group">
+              <span class="min-w-0 flex-1">
+                <span class="linha-titulo">Grupo Move</span>
+                <span class="linha-sub">Entre no grupo</span>
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://chat.whatsapp.com/FiXjt94j0B2KTxleKDwiDh" target="_blank" rel="noopener" class="linha group">
+              <span class="min-w-0 flex-1">
+                <span class="linha-titulo">Grupo Move A2</span>
+                <span class="linha-sub">Exclusivo para jovens casados</span>
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/5583996651452?text=Ol%C3%A1!%20Quero%20servir%20em%20algum%20departamento%20do%20Move." target="_blank" rel="noopener" class="linha group">
+              <span class="min-w-0 flex-1">
+                <span class="linha-titulo">Sirva em algum departamento</span>
+                <span class="linha-sub">Fale pelo WhatsApp</span>
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/5583996096077?text=Ol%C3%A1!%20Quero%20um%20aconselhamento." target="_blank" rel="noopener" class="linha group">
+              <span class="min-w-0 flex-1">
+                <span class="linha-titulo">Quero um aconselhamento</span>
+                <span class="linha-sub">Conversa pelo WhatsApp</span>
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+        </ul>
+
+        <!-- 3. A IGREJA — dois blocos lado a lado -->
+        <ul class="mt-2.5 grid grid-cols-2 gap-2.5">
+          <li>
+            <a href="https://www.instagram.com/verbopatos/" target="_blank" rel="noopener" class="bloco group">
+              <span class="flex items-start justify-between">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-amarelo"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3Zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3Zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1ZM21.1 8.2a5.4 5.4 0 0 0-1.5-3.8 5.5 5.5 0 0 0-3.8-1.5C14.3 2.8 9.7 2.8 8.2 2.9a5.5 5.5 0 0 0-3.8 1.5 5.4 5.4 0 0 0-1.5 3.8c-.1 1.5-.1 6.1 0 7.6a5.4 5.4 0 0 0 1.5 3.8 5.5 5.5 0 0 0 3.8 1.5c1.5.1 6.1.1 7.6 0a5.4 5.4 0 0 0 3.8-1.5 5.5 5.5 0 0 0 1.5-3.8c.1-1.5.1-6.1 0-7.6Zm-2 9.3a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.4.4s-4.2.1-5.4-.4a3.1 3.1 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.4s-.1-4.2.4-5.4a3.1 3.1 0 0 1 1.7-1.7c1.2-.5 4-.4 5.4-.4s4.2-.1 5.4.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.4s.1 4.2-.4 5.4Z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </span>
+              <span>
+                <span class="linha-titulo">Verbo da Vida Patos</span>
+                <span class="linha-sub">Instagram da igreja</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <!-- abre a janela para escolher Google Maps ou Waze -->
+            <button type="button" id="como-chegar-botao" aria-haspopup="dialog" aria-controls="como-chegar" class="bloco group w-full cursor-pointer">
+              <span class="flex items-start justify-between">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-amarelo"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </span>
+              <span>
+                <span class="linha-titulo">Como chegar</span>
+                <span class="linha-sub">Maps ou Waze</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 4. REDES -->
+      <section aria-labelledby="redes" class="mt-9 w-full max-w-[360px]">
+        <h2 id="redes" class="flex items-center gap-3 text-[11px] font-semibold tracking-[.16em] text-papel/60 uppercase before:h-px before:flex-1 before:bg-papel/15 after:h-px after:flex-1 after:bg-papel/15">Redes sociais</h2>
+        <ul class="mt-4 flex justify-center gap-2.5">
+          <li><a href="https://www.instagram.com/movepatos/" target="_blank" rel="noopener" aria-label="Instagram do Move" class="rede">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-current"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3Zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3Zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1ZM21.1 8.2a5.4 5.4 0 0 0-1.5-3.8 5.5 5.5 0 0 0-3.8-1.5C14.3 2.8 9.7 2.8 8.2 2.9a5.5 5.5 0 0 0-3.8 1.5 5.4 5.4 0 0 0-1.5 3.8c-.1 1.5-.1 6.1 0 7.6a5.4 5.4 0 0 0 1.5 3.8 5.5 5.5 0 0 0 3.8 1.5c1.5.1 6.1.1 7.6 0a5.4 5.4 0 0 0 3.8-1.5 5.5 5.5 0 0 0 1.5-3.8c.1-1.5.1-6.1 0-7.6Zm-2 9.3a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.4.4s-4.2.1-5.4-.4a3.1 3.1 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.4s-.1-4.2.4-5.4a3.1 3.1 0 0 1 1.7-1.7c1.2-.5 4-.4 5.4-.4s4.2-.1 5.4.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.4s.1 4.2-.4 5.4Z"/></svg>
+          </a></li>
+          <li><a href="https://www.youtube.com/@VerbodaVidaPatos" target="_blank" rel="noopener" aria-label="YouTube" class="rede">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-current"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15V9l5.8 3Z"/></svg>
+          </a></li>
+          <li><a href="https://wa.me/5583996096077" target="_blank" rel="noopener" aria-label="WhatsApp" class="rede">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-current"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.4-.5a2 2 0 0 0 .3-.5.5.5 0 0 0 0-.5c0-.1-.7-1.6-.9-2.2s-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4ZM12 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6ZM20.4 3.5A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7a11.8 11.8 0 0 0 5.6 1.4A11.8 11.8 0 0 0 20.4 3.5Z"/></svg>
+          </a></li>
+          <li><a href="https://open.spotify.com/show/6tA4urEDE4760ck2LA9Bgx" target="_blank" rel="noopener" aria-label="Spotify" class="rede">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-current"><path d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1Zm5 15.9a.7.7 0 0 1-.9.2c-2.6-1.6-5.8-1.9-9.6-1a.7.7 0 1 1-.3-1.3c4.2-1 7.7-.6 10.6 1.2a.7.7 0 0 1 .2.9Zm1.3-3a.9.9 0 0 1-1.2.3 14.5 14.5 0 0 0-11-1.3.9.9 0 0 1-.5-1.7 16.2 16.2 0 0 1 12.4 1.5.9.9 0 0 1 .3 1.2Zm.1-3.1C15.3 9 10 8.8 7 9.7a1 1 0 1 1-.6-2c3.5-1.1 9.4-.9 13.1 1.3a1 1 0 0 1-1 1.8Z"/></svg>
+          </a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer class="-mt-0.5">
+      <img src="assets/rodape.webp" alt="" width="1080" height="320" loading="lazy" class="block h-auto w-full">
+    </footer>
+  </main>
+
+  <!-- janela com os detalhes do VC escolhido (preenchida pelo vc.js) -->
+  <dialog id="vc-detalhe" aria-labelledby="vc-detalhe-nome"
+    class="mx-auto mt-auto mb-0 w-full max-w-[460px] rounded-t-3xl bg-black p-0 text-papel backdrop:bg-black/75 open:animate-subir">
+    <div class="relative">
+      <div data-foto class="relative aspect-[4/3] overflow-hidden rounded-t-3xl bg-cartaz after:absolute after:inset-x-0 after:bottom-0 after:h-1/3 after:bg-gradient-to-t after:from-black after:to-transparent"></div>
+      <form method="dialog">
+        <button aria-label="Fechar" class="absolute top-3 right-3 grid size-9 cursor-pointer place-items-center rounded-full bg-tinta/85 text-papel transition hover:bg-tinta focus-visible:outline-2 focus-visible:outline-amarelo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[2.5]"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </form>
+    </div>
+    <div class="px-6 pt-4 pb-8">
+      <p class="text-[11px] font-semibold tracking-[.14em] text-amarelo uppercase">VC · <span data-bairro></span></p>
+      <h3 id="vc-detalhe-nome" data-lider class="opsz-24 mt-1 text-2xl leading-tight font-black tracking-[-.02em]"></h3>
+      <p class="mt-1 text-sm text-papel/65">Líder do VC</p>
+      <a data-whatsapp href="#" target="_blank" rel="noopener"
+        class="mt-6 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-amarelo px-5 text-[15px] font-extrabold text-tinta no-underline transition duration-150 hover:-translate-y-px active:translate-y-px focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-papel">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-[18px] fill-current"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.4-.5a2 2 0 0 0 .3-.5.5.5 0 0 0 0-.5c0-.1-.7-1.6-.9-2.2s-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.4ZM12 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6ZM20.4 3.5A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7a11.8 11.8 0 0 0 5.6 1.4A11.8 11.8 0 0 0 20.4 3.5Z"/></svg>
+        <span>Conversar com o líder</span>
+      </a>
+    </div>
+  </dialog>
+
+  <!-- janela "Como chegar": a pessoa escolhe o app -->
+  <dialog id="como-chegar" aria-labelledby="como-chegar-titulo"
+    class="mx-auto mt-auto mb-0 w-full max-w-[460px] rounded-t-3xl bg-black p-0 text-papel backdrop:bg-black/75 open:animate-subir">
+    <div class="px-6 pt-6 pb-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-[11px] font-semibold tracking-[.14em] text-amarelo uppercase">Como chegar</p>
+          <h3 id="como-chegar-titulo" class="opsz-24 mt-1 text-2xl leading-tight font-black tracking-[-.02em]">Abrir com qual app?</h3>
+        </div>
+        <form method="dialog">
+          <button aria-label="Fechar" class="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full bg-tinta text-papel transition hover:bg-cartaz focus-visible:outline-2 focus-visible:outline-amarelo">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[2.5]"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+        </form>
+      </div>
+      <ul class="mt-5 flex flex-col gap-2.5">
+        <li>
+          <a href="https://maps.app.goo.gl/TWv4MFFiJzJ6cHcd7" target="_blank" rel="noopener" class="linha group">
+            <span class="min-w-0 flex-1">
+              <span class="linha-titulo">Google Maps</span>
+              <span class="linha-sub">Rota de carro, ônibus ou a pé</span>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://waze.com/ul?ll=-7.0357206,-37.2786682&amp;navigate=yes" target="_blank" rel="noopener" class="linha group">
+            <span class="min-w-0 flex-1">
+              <span class="linha-titulo">Waze</span>
+              <span class="linha-sub">Rota de carro com trânsito</span>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="seta"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </dialog>
+
+  <script src="vc.js"></script>
+</body>
+</html>

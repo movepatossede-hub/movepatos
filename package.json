@@ -1,0 +1,13 @@
+{
+  "name": "move-patos-links",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./style.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./style.css --minify",
+    "publicar": "npm run build && node scripts/publicar.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  }
+}
