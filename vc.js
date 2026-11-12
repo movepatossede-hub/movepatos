@@ -40,7 +40,7 @@ const semFoto = `
 
 const foto = (vc) =>
   vc.foto
-    ? `<img src="${vc.foto}" alt="" loading="lazy" style="object-position:${vc.foco || "50% 25%"}" class="absolute inset-0 size-full object-cover">`
+    ? `<img src="${vc.foto}" alt="" decoding="async" draggable="false" style="object-position:${vc.foco || "50% 25%"}" class="absolute inset-0 size-full object-cover">`
     : semFoto;
 
 function linkWhatsApp(vc) {
@@ -55,42 +55,63 @@ lista.innerHTML = VCS.map((vc, i) => `
     <button type="button" data-vc="${i}" aria-label="${vc.lider}, ${vc.bairro}"
       class="relative block aspect-[3/4] w-full origin-center cursor-pointer overflow-hidden rounded-2xl bg-cartaz shadow-[0_18px_36px_rgba(0,0,0,.6)] ring-1 ring-papel/15 ring-inset outline-none will-change-transform focus-visible:ring-3 focus-visible:ring-papel">
       ${foto(vc)}
+      <span data-sombra aria-hidden="true" class="pointer-events-none absolute inset-0 bg-black opacity-0 will-change-[opacity]"></span>
     </button>
   </li>`).join("");
 
 const itens = [...lista.children];
-let ativo = 0;
+const cards = itens.map((li) => li.firstElementChild);
+const sombras = cards.map((card) => card.querySelector("[data-sombra]"));
+let ativo = -1;
 
-/* posiciona os cards: o do meio grande, os vizinhos menores e por trás */
+/* medidas dos cards — guardadas para não medir a página a cada quadro do deslize */
+let meios = [];      // centro de cada card dentro da lista
+let largura = 1;     // largura de um card
+let metadeLista = 0; // metade da área visível
+let camadas = [];    // último z-index aplicado em cada card
+
+function medir() {
+  largura = itens[0].offsetWidth || 1;
+  meios = itens.map((li) => li.offsetLeft + li.offsetWidth / 2);
+  metadeLista = lista.clientWidth / 2;
+}
+
+/* posiciona os cards: o do meio grande, os vizinhos menores e por trás.
+   Só mexe em transform e opacity, que o celular anima sem redesenhar a página. */
 function atualizar() {
-  const centro = lista.scrollLeft + lista.clientWidth / 2;
+  const centro = lista.scrollLeft + metadeLista;
   let menor = Infinity;
+  let maisPerto = 0;
 
-  itens.forEach((li, i) => {
-    const d = (li.offsetLeft + li.offsetWidth / 2 - centro) / li.offsetWidth;
+  for (let i = 0; i < itens.length; i++) {
+    const d = (meios[i] - centro) / largura;
     const a = Math.min(Math.abs(d), 2);
-    const escala = 1 - a * 0.2;
     const puxa = -Math.sign(d) * a * 30; // aproxima os vizinhos do centro (sobreposição)
 
-    li.style.zIndex = String(100 - Math.round(a * 10));
-    const card = li.firstElementChild;
-    card.style.transform = `translateX(${puxa}%) scale(${escala})`;
-    card.style.filter = `brightness(${1 - a * 0.3})`;
+    cards[i].style.transform = `translate3d(${puxa}%,0,0) scale(${1 - a * 0.2})`;
+    sombras[i].style.opacity = String(a * 0.3); // escurece os que estão por trás
 
-    if (Math.abs(d) < menor) { menor = Math.abs(d); ativo = i; }
-  });
+    const camada = 100 - Math.round(a * 10);
+    if (camadas[i] !== camada) { camadas[i] = camada; itens[i].style.zIndex = String(camada); }
 
-  itens.forEach((li, i) => li.firstElementChild.setAttribute("aria-current", String(i === ativo)));
-  nome.textContent = VCS[ativo].lider;
-  bairro.textContent = VCS[ativo].bairro;
+    if (Math.abs(d) < menor) { menor = Math.abs(d); maisPerto = i; }
+  }
+
+  /* nome e bairro só são trocados quando o card do meio muda */
+  if (maisPerto !== ativo) {
+    ativo = maisPerto;
+    cards.forEach((card, i) => card.setAttribute("aria-current", String(i === ativo)));
+    nome.textContent = VCS[ativo].lider;
+    bairro.textContent = VCS[ativo].bairro;
+  }
 }
 
 let quadro = 0;
 lista.addEventListener("scroll", () => {
-  cancelAnimationFrame(quadro);
-  quadro = requestAnimationFrame(atualizar);
+  if (quadro) return; // no máximo uma atualização por quadro
+  quadro = requestAnimationFrame(() => { quadro = 0; atualizar(); });
 }, { passive: true });
-addEventListener("resize", atualizar);
+addEventListener("resize", () => { medir(); atualizar(); });
 
 function centralizar(i, suave = true) {
   const li = itens[i];
@@ -107,6 +128,7 @@ function alternarPainel() {
   painel.toggleAttribute("data-aberto", !aberto);
   painel.inert = aberto;
   if (!aberto) {
+    medir();
     centralizar(Math.floor(VCS.length / 2), false); // começa pelo do meio
     atualizar();
   }
