@@ -50,8 +50,19 @@
           <div class="overflow-hidden">
             <div class="mt-4 bg-black pt-1 pb-5 text-center shadow-[inset_0_1px_0_rgba(255,242,0,.35),inset_0_-1px_0_rgba(255,242,0,.35)]">
               <!-- carrossel: o card do meio fica em destaque -->
-              <ul id="vc-lista" aria-label="Líderes de VC"
-                class="relative flex touch-pan-x touch-pan-y snap-x snap-mandatory overflow-x-auto overscroll-x-contain px-[15%] py-7 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"></ul>
+              <div class="relative">
+                <ul id="vc-lista" aria-label="Líderes de VC"
+                  class="relative flex touch-pan-x touch-pan-y snap-x snap-mandatory overflow-x-auto overscroll-x-contain px-[15%] py-7 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"></ul>
+                <!-- setas: avisam que há mais cards; somem quando não há mais para aquele lado -->
+                <button type="button" id="vc-anterior" aria-label="Líder anterior" disabled
+                  class="absolute top-1/2 left-2 z-[200] grid size-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-amarelo text-tinta shadow-[0_6px_16px_rgba(0,0,0,.55)] transition duration-200 active:scale-90 disabled:pointer-events-none disabled:opacity-0 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-papel">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[3]"><path d="m15 6-6 6 6 6"/></svg>
+                </button>
+                <button type="button" id="vc-proximo" aria-label="Próximo líder"
+                  class="absolute top-1/2 right-2 z-[200] grid size-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-amarelo text-tinta shadow-[0_6px_16px_rgba(0,0,0,.55)] transition duration-200 active:scale-90 disabled:pointer-events-none disabled:opacity-0 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-papel">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[3]"><path d="m9 6 6 6-6 6"/></svg>
+                </button>
+              </div>
               <div aria-live="polite" class="-mt-2">
                 <p id="vc-nome" class="text-sm leading-tight font-bold text-papel"></p>
                 <p id="vc-bairro" class="mt-0.5 text-[10px] font-semibold tracking-[.12em] text-amarelo uppercase"></p>

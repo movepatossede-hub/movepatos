@@ -59,6 +59,8 @@ lista.innerHTML = VCS.map((vc, i) => `
     </button>
   </li>`).join("");
 
+const setaAnterior = document.getElementById("vc-anterior");
+const setaProximo = document.getElementById("vc-proximo");
 const itens = [...lista.children];
 const cards = itens.map((li) => li.firstElementChild);
 const sombras = cards.map((card) => card.querySelector("[data-sombra]"));
@@ -103,6 +105,9 @@ function atualizar() {
     cards.forEach((card, i) => card.setAttribute("aria-current", String(i === ativo)));
     nome.textContent = VCS[ativo].lider;
     bairro.textContent = VCS[ativo].bairro;
+    /* setas: somem quando não há mais cards para aquele lado */
+    setaAnterior.disabled = ativo === 0;
+    setaProximo.disabled = ativo === VCS.length - 1;
   }
 }
 
@@ -129,12 +134,16 @@ function alternarPainel() {
   painel.inert = aberto;
   if (!aberto) {
     medir();
-    centralizar(Math.floor(VCS.length / 2), false); // começa pelo do meio
+    centralizar(0, false); // sempre começa pelo primeiro da lista
     atualizar();
   }
 }
 painel.inert = true;
 botao.addEventListener("click", alternarPainel);
+
+/* ---------- setas ---------- */
+setaAnterior.addEventListener("click", () => centralizar(Math.max(ativo - 1, 0)));
+setaProximo.addEventListener("click", () => centralizar(Math.min(ativo + 1, VCS.length - 1)));
 
 /* ---------- tocar num card ---------- */
 lista.addEventListener("click", (e) => {
