@@ -17,6 +17,7 @@ const VCS = [
   { lider: "Asdrúbal", bairro: "UNIFIP", foto: "assets/vc/asdrubal.webp", foco: "45% 15%", whatsapp: "5584996284031" },
   { lider: "Vinicius", bairro: "Praça do São Sebastião", foto: "assets/vc/vinicius.webp", foco: "65% 35%", whatsapp: "5583921464141" },
   { lider: "Romário", bairro: "São Sebastião", foto: "assets/vc/romario.webp", foco: "48% 20%", whatsapp: "5583988334473" },
+  { lider: "Davi", bairro: "UFCG", foto: "assets/vc/davi.webp", foco: "42% 10%", whatsapp: "5584998996556" },
 ];
 
 const WHATSAPP_MOVE = "5583996096077";
